@@ -7,7 +7,8 @@ export default function(state = INITIALSTATE, action){
             return {
                 ...state,
                 messages: action.messages,
-                viewTrashedMessages: action.viewTrashedMessages
+                starred: action.starred,
+                trashed: action.trashed
             }
         default:
             return state;
