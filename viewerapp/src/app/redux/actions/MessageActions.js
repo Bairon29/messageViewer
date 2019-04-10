@@ -17,8 +17,8 @@ export const getMessages = (trashed) => (dispatch) => {
 
         dispatch({
             type: GET_ALL_MESSAGES,
-            messages: messagesData,
-            starred: 10,
+            messages: messagesData.messages,
+            starred: messagesData.messages.length,
             trashed: false
         })
     }

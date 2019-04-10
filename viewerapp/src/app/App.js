@@ -21,7 +21,7 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.messages !== this.state.messages){
-      console.log('next props', nextProps.messages)
+      // console.log('next props', nextProps.messages)
         this.setState({
             messages: nextProps.messages,
             starred: nextProps.starred,
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 }
 
 App.propTypes = {
-  messages: PropTypes.object,
+  messages: PropTypes.array,
   starred: PropTypes.number,
   trashed: PropTypes.bool
 };

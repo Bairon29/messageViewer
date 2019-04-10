@@ -10,8 +10,8 @@ class Header extends Component {
         <nav className="main-menu">
             <ul className="main-menu-items">
                 <li className="logo">
-                    <a href="#" >
-                        <img src={Signafire} />
+                    <a href="/" >
+                        <img src={Signafire} alt="Logo" />
                     </a>
                 </li>
                 <li>

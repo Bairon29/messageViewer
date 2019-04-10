@@ -12,12 +12,21 @@ class MessageViewer extends Component {
       starred: 0,
       messages: {}
     }
-
     this.shouldLoadTemple = this.shouldLoadTemple.bind(this);
   }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.messages !== this.state.messages){
+        this.setState({
+            messages: nextProps.messages,
+            starred: nextProps.starred,
+            trashed: nextProps.trashed
+        })
+    }
+  }
   shouldLoadTemple(){
-    if(this.props.messages !== null && this.props.messages.length > 0){
-      return <MessageItem messages={this.props.messages} loadTemple={false}/>
+    if(this.state.messages !== null && this.state.messages.length > 0){
+      return <MessageItem messages={this.state.messages} loadTemple={false}/>
     } else{
         return <h1>Loading..</h1>
     }
@@ -46,7 +55,7 @@ const mapStateToProps = state => {
 }
 
 MessageViewer.propTypes = {
-  messages: PropTypes.object,
+  messages: PropTypes.array,
   starred: PropTypes.number,
   trashed: PropTypes.bool
 };
