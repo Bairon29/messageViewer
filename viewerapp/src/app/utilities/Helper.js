@@ -1,3 +1,5 @@
+import { MONTH_SHORT_NAMES } from './Contants';
+
 export const trashFilter = (messagesData, trashed) => {
     var tempMessages = {
         messages: []
@@ -10,4 +12,14 @@ export const trashFilter = (messagesData, trashed) => {
         }
     });
     return tempMessages;
+}
+
+export const getActualDate = (dateString) => {
+    var date = new Date(dateString);
+    var str = "";
+
+    str += MONTH_SHORT_NAMES[date.getMonth()];
+    str += `, ${date.getDate()}`;
+    str += ` ${date.getFullYear()}`;
+    return str;
 }

@@ -38,9 +38,7 @@ class MessageViewer extends Component {
         <div className="control-info">
           <h1>Starred: {this.state.starred}</h1>
         </div>
-        <div className="messages-main-container">
-          {this.shouldLoadTemple()}
-        </div>
+        {this.shouldLoadTemple()}
       </section>
     );
   }
