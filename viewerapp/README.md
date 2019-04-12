@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Front-end App
 
-## Available Scripts
+This project is reflecting only the Front-end requirements 
 
-In the project directory, you can run:
-
-### `npm start`
+### Run App excute command `npm start` at the root folder
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### App Set Up
 
-### `npm test`
+There are Three main component: Header.js, MessagerViewer.js and MessageItem.js
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Header.js: 
 
-### `npm run build`
+This component shows the logo and name of the view port
+## MessagerViewer.js:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This component takes care of the amount of starred messages, Search field, toggle view between trashed and non-trashed messages and renders the MessageItem.js. It also makes sure the MessageItem.js is updated on how to display its state
+## MessageItem.js
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+This component displays all messages and its content. It can trashed and star ad message
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Folder Structure
 
-### `npm run eject`
+The index.js file inside the src folder renders the entire App
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## app folder
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The App.js is directly under this folder. The App.js file is the main component parent to all other components
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## app -> components folder
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This folder contains all of the components mentioned above. The components are separeted by appropiate folders. There is also a folder for images for the logo provided by the assessment
 
-## Learn More
+## app -> localDate folder
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This folder simple contains the json file provide in the assessment and it is acting as local data
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## app -> redux folder
 
-### Code Splitting
+This folder contains everything implement about redux. There are three folders inside: actions, actionTypes, and reducers. This folder contain appropiate file implementing redux relate actions
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## app -> utilities folder
 
-### Analyzing the Bundle Size
+This folder contains a Constant.js file where all constants variables are stored except for redux constants. Also a Helper.js file where various functions are implemented to help mainly the react components
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#Note: the folder named referenceImageOnlyPurpose at the root
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This folder is only there to refenrence the image I was provided with to match to my best of ability
