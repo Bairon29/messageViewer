@@ -49,10 +49,12 @@
 
 @media (max-width: 1026px) {
     .header .main-menu .main-menu-items .logo {
-        width: 35%;
+        width: 15%;
     }
 }
 
-@media (min-width: 768px) and (max-width: 1026px) {
-    
-  }
+@media (max-width: 840px) {
+    .header .main-menu .main-menu-items .logo {
+        width: 130px;
+    }
+}

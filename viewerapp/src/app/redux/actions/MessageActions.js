@@ -1,17 +1,22 @@
 import data from '../../localData/messages.json';
-import { GET_ALL_MESSAGES, TOGGLE_STARRED } from '../actionTypes/Types';
-import { trashFilter } from '../../utilities/Helper';
+import { 
+    GET_ALL_MESSAGES, 
+    TOGGLE_STARRED, 
+    TOGGLE_TRASHED, 
+    TRASH_MESSAGE,
+    HIGHLIGHT } from '../actionTypes/Types';
+import { trashFilter, starredAmount, findWord } from '../../utilities/Helper';
 // var AUTH = sessionStorage.getItem('Auth');
 //     let user = JSON.parse(AUTH);
 
 export const getMessages = (trashed) => (dispatch) => {
 
-    let messagesData = trashFilter(data, trashed);
+    // let messagesData = trashFilter(data.messages, trashed);
     console.log('notttt');
     dispatch({
         type: GET_ALL_MESSAGES,
-        messages: messagesData.messages,
-        starred: messagesData.messages.length,
+        messages: data.messages,
+        starred: starredAmount(data.messages),
         trashed: false
     })
     
@@ -20,18 +25,58 @@ export const getMessages = (trashed) => (dispatch) => {
 export const toggleStarred = (messages, id) => (dispatch) => {
 
     console.log('toggling',messages, id);
-    let tempM = messages;
-    for(var i = 0; i < tempM.length; i++){
-        if(id === tempM[i]["id"]){
-            console.log('before',tempM[i]["meta"]["isStarred"])
-            tempM[i]["meta"]["isStarred"] = !tempM[i]["meta"]["isStarred"];
-            console.log('after',tempM[i]["meta"]["isStarred"])
+    for(var i = 0; i < messages.length; i++){
+        if(id === messages[i]["id"]){
+            console.log('before',messages[i]["meta"]["isStarred"])
+            messages[i]["meta"]["isStarred"] = !messages[i]["meta"]["isStarred"];
+            console.log('after',messages[i]["meta"]["isStarred"])
             break;
         }
     }
     dispatch({
         type: TOGGLE_STARRED,
-        messages: tempM,
-        starred: messages.length
+        messages: messages,
+        starred: starredAmount(messages)
+    })
+}
+
+export const toggleTrashed = (trashed) => (dispatch) => {
+
+    // console.log('toggling',messages, id);
+    // let messagesData = trashFilter(messages, trashed);
+    dispatch({
+        type: TOGGLE_TRASHED,
+        // starred: starredAmount(messagesData),
+        trashed: trashed,
+        use_highlighted: false
+    })
+}
+
+export const trashMessage = (messages, id) => (dispatch) => {
+
+    for(var i = 0; i < messages.length; i++){
+        if(id === messages[i]["id"]){
+            // console.log('before',messages[i]["meta"]["isStarred"])
+            messages[i]["meta"]["isTrashed"] = true;
+            // console.log('after',messages[i]["meta"]["isStarred"])
+            break;
+        }
+    }
+    dispatch({
+        type: TRASH_MESSAGE,
+        messages: messages,
+        starred: starredAmount(messages)
+    })
+}
+
+export const highlightWords = (word) => (dispatch) => {
+
+    // console.log('toggling',messages, id);
+    // let messagesData = findWord(messages, word);
+    dispatch({
+        type: HIGHLIGHT,
+        // messages_highlighted: messagesData,
+        use_highlighted: true,
+        word: word
     })
 }
