@@ -14,21 +14,21 @@ class App extends Component {
     super();
     this.state = {
       starred: 0,
-      messages: {},
+      messages: [],
       trashed: false
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.messages !== this.state.messages){
-      // console.log('next props', nextProps.messages)
-        this.setState({
-            messages: nextProps.messages,
-            starred: nextProps.starred,
-            trashed: nextProps.trashed
-        })
-    }
-  }
+  // componentWillReceiveProps(nextProps){
+  //   if(nextProps.messages !== this.state.messages){
+  //     // console.log('next props', nextProps.messages)
+  //       this.setState({
+  //           messages: nextProps.messages,
+  //           starred: nextProps.starred,
+  //           trashed: nextProps.trashed
+  //       })
+  //   }
+  // }
 
   componentDidMount(){
     this.props.getMessages(false);

@@ -6,11 +6,8 @@ import { trashFilter } from '../../utilities/Helper';
 
 export const getMessages = (trashed) => (dispatch) => {
 
-    var sessionData = sessionStorage.getItem('messagesData');
-    var messagesData = JSON.parse(sessionData);
-
-    messagesData = trashFilter(messagesData, trashed);
-
+    let messagesData = trashFilter(data, trashed);
+    console.log('notttt');
     dispatch({
         type: GET_ALL_MESSAGES,
         messages: messagesData.messages,
@@ -23,10 +20,18 @@ export const getMessages = (trashed) => (dispatch) => {
 export const toggleStarred = (messages, id) => (dispatch) => {
 
     console.log('toggling',messages, id);
-    // dispatch({
-    //     type: TOGGLE_STARRED,
-    //     messages: messagesData.messages,
-    //     starred: messagesData.messages.length,
-    //     trashed: false
-    // })
+    let tempM = messages;
+    for(var i = 0; i < tempM.length; i++){
+        if(id === tempM[i]["id"]){
+            console.log('before',tempM[i]["meta"]["isStarred"])
+            tempM[i]["meta"]["isStarred"] = !tempM[i]["meta"]["isStarred"];
+            console.log('after',tempM[i]["meta"]["isStarred"])
+            break;
+        }
+    }
+    dispatch({
+        type: TOGGLE_STARRED,
+        messages: tempM,
+        starred: messages.length
+    })
 }

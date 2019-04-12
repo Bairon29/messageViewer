@@ -12,7 +12,7 @@ class MessageViewer extends Component {
       starred: 0,
       messages: {}
     }
-    this.shouldLoadTemple = this.shouldLoadTemple.bind(this);
+    // this.shouldLoadTemple = this.shouldLoadTemple.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -24,13 +24,13 @@ class MessageViewer extends Component {
         })
     }
   }
-  shouldLoadTemple(){
-    if(this.state.messages !== null && this.state.messages.length > 0){
-      return <MessageItem messages={this.state.messages} loadTemple={false}/>
-    } else{
-        return <h1>Loading..</h1>
-    }
-  }
+  // shouldLoadTemple(){
+  //   if(this.state.messages !== null && this.state.messages.length > 0){
+  //     return <MessageItem  loadTemple={false}/>
+  //   } else{
+  //       return <h1>Loading..</h1>
+  //   }
+  // }
 
   render() {
     return (
@@ -38,7 +38,7 @@ class MessageViewer extends Component {
         <div className="control-info">
           <h1>Starred: {this.state.starred}</h1>
         </div>
-        {this.shouldLoadTemple()}
+        <MessageItem />
       </section>
     );
   }
